@@ -28,11 +28,11 @@ pipeline {
                  bat "mvnw.cmd test"
             }
        }
-           stage('Test') {
+           stage('Deploy') {
 		    steps {
 
                 // To run Maven on a Windows agent, use
-                 bat "mvnw.cmd test"
+                bat "scp target/*.jar ~"
             }
        }
     }	       
