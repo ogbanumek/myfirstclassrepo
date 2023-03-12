@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    // agent any
 
    // tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -23,6 +23,13 @@ pipeline {
 		    steps {
                 // Run Maven on a Unix agent.
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                // To run Maven on a Windows agent, use
+                 bat "mvnw.cmd test"
+            }
+       }
+           stage('Test') {
+		    steps {
 
                 // To run Maven on a Windows agent, use
                  bat "mvnw.cmd test"
