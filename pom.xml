@@ -37,5 +37,12 @@
 			</plugin>
 		</plugins>
 	</build>
+    <distributionManagement>
+        <repository>
+          <id>central</id>
+          <name>geopellcloud-libs-release</name>
+          <url>https://geopellcloud.jfrog.io/artifactory/geopellcloud-libs-release</url>
+        </repository>
+    </distributionManagement>
 
 </project>
