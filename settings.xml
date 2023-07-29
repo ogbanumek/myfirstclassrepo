@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <username>${{ secrets.JFROG_USERNAME }}</username>
-      <password>${{ secrets.JFROG_PASSWORD }}</password>
+      <username>ogbanumek@yahoo.com</username>
+      <password>cmVmdGtuOjAxOjE3MjIxMzkxNTQ6TER6SXdZdjEyZ2p6NURyOGVENVM5dUx5RXZN</password>
       <id>central</id>
     </server>
     <server>
-      <username>${{ secrets.JFROG_USERNAME }}<</username>
-      <password>${{ secrets.JFROG_PASSWORD }}<</password>
+      <username>ogbanumek@yahoo.com<</username>
+      <password>cmVmdGtuOjAxOjE3MjIxMzkxNTQ6TER6SXdZdjEyZ2p6NURyOGVENVM5dUx5RXZN<</password>
       <id>snapshots</id>
     </server>
   </servers>
