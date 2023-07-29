@@ -2,14 +2,13 @@
 <settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
-    <server>
-      <username>ogbanumek@yahoo.com</username>
-      <password>cmVmdGtuOjAxOjE3MjIxMzkxNTQ6TER6SXdZdjEyZ2p6NURyOGVENVM5dUx5RXZN</password>
+    <server>${security.getCurrentUsername()}</username>
+      <password>${security.getEscapedEncryptedPassword()!cmVmdGtuOjAxOjE3MjIxMzkxNTQ6TER6SXdZdjEyZ2p6NURyOGVENVM5dUx5RXZN}</password>
       <id>central</id>
     </server>
     <server>
-      <username>ogbanumek@yahoo.com<</username>
-      <password>cmVmdGtuOjAxOjE3MjIxMzkxNTQ6TER6SXdZdjEyZ2p6NURyOGVENVM5dUx5RXZN<</password>
+      <username>${security.getCurrentUsername()}</username>
+      <password>${security.getEscapedEncryptedPassword()!cmVmdGtuOjAxOjE3MjIxMzkxNTQ6TER6SXdZdjEyZ2p6NURyOGVENVM5dUx5RXZN}<</password>
       <id>snapshots</id>
     </server>
   </servers>
