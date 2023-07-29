@@ -29,7 +29,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s ${{ github.workspace }/settings.xml
+      run: mvn deploy -s ${{ github.workspace }}/settings.xml
       env:
         GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
