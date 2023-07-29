@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Get some code from a GitHub repository
+                // Get some code from a GitHub repository of the project
                 git 'https://github.com/Geopell-Cloud/myfirstclassrepo.git'
 
                 // Run Maven on a Unix agent.
