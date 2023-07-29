@@ -48,4 +48,6 @@
         <name>springboot-first-app</name>
         <url>https://geopellcloud.jfrog.io/artifactory/geopellcloud</url>
     </snapshotRepository>
-</distributionManagement>
+ </distributionManagement>
+</project>
+	
