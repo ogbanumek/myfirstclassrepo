@@ -47,7 +47,4 @@ jobs:
         name: build-artifacts
         path: target/
         retention-days: 1
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s ${{ github.workspace }}/settings.xml
   
