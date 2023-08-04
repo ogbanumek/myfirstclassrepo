@@ -37,7 +37,7 @@ jobs:
         version: latest
     - name: Configure JFrog CLI
       run: |
-        jfrog config add --url=https://geopellcloud.jfrog.io --user=${{ secrets.JFROG_USERNAME }} --password= ${{ secrets.JFROG_USERNAME }}
+        jfrog config add --url=https://geopellcloud.jfrog.io --user=${{ secrets.JFROG_USERNAME }} --password=cmVmdGtuOjAxOjE3MjI3MjI3MDE6SXNTWkVRcUhja2FLd1VCTVd0QU1FV0JOUE5i
     - name: Configure Jfrog CLI Maven
       run: jfrog mvnc -repo-deploy-snapshots geopellcloud --repo-deploy-releases geopellcloud-libs-release-local # --server-id-resolve artifactory --server-id-deploy artifactory --repo-resolve-releases libs-release repo-resolve-snapshots libs-snapshot --repo-deploy-snapshots geopellcloud
     - name: Build with Maven
