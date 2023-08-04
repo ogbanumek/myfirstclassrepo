@@ -42,7 +42,7 @@ jobs:
       run: |
         jfrog config add --url=https://geopellcloud.jfrog.io/ # --user=${{ secrets.JFROG_USERNAME }} --password= ${{ secrets.JFROG_USERNAME }} --interactive=false artifactory
     - name: Configure Jfrog CLI Maven
-      run: jfrog mvnc --server-id-resolve artifactory --server-id-deploy artifactory --repo-resolve-releases libs-release repo-resolve-snapshots libs-snapshot --repo-deploy-releases geopellcloud --repo-deploy-snapshots geopellcloud
+      run: jfrog mvnc  --repo-deploy-releases geopellcloud # --server-id-resolve artifactory --server-id-deploy artifactory --repo-resolve-releases libs-release repo-resolve-snapshots libs-snapshot --repo-deploy-snapshots geopellcloud
     - name: Build with Maven
       run: jfrog mvn -DskipTests=true -Dcheckstyle.skip clean install
     - uses: actions/upload-artifact@v2
