@@ -20,9 +20,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
     - uses: actions/checkout@v3
@@ -40,7 +37,7 @@ jobs:
         version: latest
     - name: Configure JFrog CLI
       run: |
-        jfrog config add --url=https://geopellcloud.jfrog.io/ # --user=${{ secrets.JFROG_USERNAME }} --password= ${{ secrets.JFROG_USERNAME }} --interactive=false artifactory
+        jfrog config add --url=https://geopellcloud.jfrog.io --user=${{ secrets.JFROG_USERNAME }} --password= ${{ secrets.JFROG_USERNAME }}
     - name: Configure Jfrog CLI Maven
       run: jfrog mvnc -repo-deploy-snapshots geopellcloud --repo-deploy-releases geopellcloud-libs-release-local # --server-id-resolve artifactory --server-id-deploy artifactory --repo-resolve-releases libs-release repo-resolve-snapshots libs-snapshot --repo-deploy-snapshots geopellcloud
     - name: Build with Maven
