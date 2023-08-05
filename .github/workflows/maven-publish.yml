@@ -7,15 +7,19 @@ on:
   push:
    branches:
     - master
-    
+  pull_request:
+   branches:
+    - master
 
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+  JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
+  JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}    
+     
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
 
     steps:
     - uses: actions/checkout@v3
@@ -27,12 +31,20 @@ jobs:
         server-id: central # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+    - name: Download JFrog CLI
+      uses: jfrog/setup-jfrog-cli@v3
+      with:
+        version: latest
+    - name: Configure JFrog CLI
+      run: |
+        jfrog config add --url=https://geopellcloud.jfrog.io --user=${{ secrets.JFROG_USERNAME }} --password=cmVmdGtuOjAxOjE3MjI3MjI3MDE6SXNTWkVRcUhja2FLd1VCTVd0QU1FV0JOUE5i
+    - name: Configure Jfrog CLI Maven
+      run: jfrog mvnc -repo-deploy-snapshots geopellcloud --repo-deploy-releases geopellcloud-libs-release-local # --server-id-resolve artifactory --server-id-deploy artifactory --repo-resolve-releases libs-release repo-resolve-snapshots libs-snapshot --repo-deploy-snapshots geopellcloud
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s ${{ github.workspace }}/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        JFROG_USERNAME: ${{ secrets.JFROG_USERNAME }}
-        JFROG_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
+      run: jfrog mvn -DskipTests=true -Dcheckstyle.skip clean install
+    - uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts
+        path: target/
+        retention-days: 1
+  
