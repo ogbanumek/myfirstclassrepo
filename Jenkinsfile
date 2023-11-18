@@ -12,7 +12,7 @@ pipeline {
                 // Get some code from a GitHub repository
                 git 'https://github.com/Geopell-Cloud/myfirstclassrepo.git'
 
-                // Run Maven on a Unix agent.
+                // Run Maven on a Unix agent and Linux OS
                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
                 // To run Maven on a Windows agent, use
